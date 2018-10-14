@@ -1,0 +1,105 @@
+.navbar {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 3em;
+    border-bottom: 2px solid black;
+    margin-bottom: 1em;
+    justify-content: space-evenly;
+    border-bottom: var(--shadow);
+}
+
+.navbar-banner {
+    margin-top: -1.5%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 1.5rem;
+    color:var(--primary);
+    letter-spacing: 5px;
+    height: 3em;
+    padding: 5px;
+    font-size: 1.5rem;
+}
+
+.navbar-links {
+    display: grid;
+    grid-column: 2/3;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+    padding: 5px;
+    margin-right: 1rem;
+    /* overflow: hidden; */
+}
+
+.navbar-links .bar-icon {
+    display: none;
+}
+
+.links-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    height: 3em;
+}
+
+.links-right:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--light);
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.links-right:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+@media screen and (max-width:600px) {
+    .navbar-links a:not(:last-child) {
+        display: none;
+    }
+    .navbar-links a.bar-icon {
+        align-self: center;
+        justify-self: end;
+        grid-column: 1/6;
+        display: block;
+        font-size: 1.6rem;
+    }
+    .navbar-links.responsive {
+        position: relative;
+        display: grid;
+        grid-template-columns: none;
+        transition: 1s ease-in-out;
+        background-color: rgba(255, 255, 255, 0.829);
+        border-radius: 5px;
+    }
+    .navbar-links.responsive a.bar-icon {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+    }
+    .navbar-links.responsive a {
+        float: none;
+        display: grid;
+        color:black;
+        text-align: left;
+        flex-direction: column;
+        grid-template-columns: none;
+        padding: .5rem;
+    }
+    .links-right {
+        height: 2rem;
+        justify-content: start;
+    }
+}

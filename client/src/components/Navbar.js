@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
+import "./navbar.css";
 
 class Navbar extends Component {
 
-    componentDidMount() {
-        document.getElementById("dropdown-trigger").dropdown();
+    toggleNavMenu = () => {
+        let x = document.getElementById("myTopnav");
+        if (x.className === "navbar-links") {
+            x.className += " responsive";
+        } else {
+            x.className = "navbar-links";
+        }
+
     }
 
     render() {
-        //edit for links for volunteer
         return (
-            <div>
-                <ul id="dropdown1" className="dropdown-content">
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
-                    <li className="divider"></li>
-                    <li><a href="#!">three</a></li>
-                </ul>
-                <nav>
-                    <div className="nav-wrapper">
-                        <a href="#!" className="brand-logo">Logo</a>
-                        <ul className="right hide-on-med-and-down">
-                            <li><a href="sass.html">Sass</a></li>
-                            <li><a href="badges.html">Components</a></li>
-                            <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+            <nav className="navbar">
+                <div className="navbar-banner">
+                    <a className="link" href="/"><h2>Voluntary</h2></a>
+                </div>
+                <div id="myTopnav" className="navbar-links">
+                    <a className="links-right" href="/createpost">I Need Help!</a>
+                    <a className="links-right" href="/all">View All Postings</a>
+                    <a className="links-right" href="/myaccount">My Account</a>
+                    <a className="links-right" href="/logout">Logout</a>
+                </div>
+            </nav>
         )
     }
 }

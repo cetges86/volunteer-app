@@ -132,3 +132,21 @@ body {
     color:var(--dark);
     transition:1s;
 }
+
+/* SIGN UP PAGE */
+
+.signup-form {
+    max-width:50%;
+    margin: auto;
+    border: 1px solid var(--light);
+}
+
+.signup-inputs {
+    padding:10px;
+    border-radius: 5px;
+    margin:1rem;
+}
+
+#signup-banner {
+    color:var(--primary);
+}

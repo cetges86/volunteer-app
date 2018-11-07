@@ -1,10 +1,10 @@
-var express = require('express');
+const express = require('express');
 const path = require('path');
-var router = express.Router();
-// const apiRoutes = require("./api");
+const router = express.Router();
+//const apiRoutes = require("./api");
 
-// API Routes
-// router.use("/api",apiRoutes);
+//API Routes
+//router.use("/api",apiRoutes);
 
 /* GET home page. */
 router.use('/', function(req, res) {

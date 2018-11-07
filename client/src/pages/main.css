@@ -89,6 +89,16 @@ body {
     letter-spacing: 2px;
 }
 
+.btn {
+    justify-self: center;
+    width:100px;
+    padding:10px;
+    background-color: var(--med);
+    color:var(--white);
+    border-radius: 10px;
+    font-size:.9rem;
+}
+
 /* LOGIN PAGE */
 
 .login-box {
@@ -126,6 +136,7 @@ body {
     border-radius: 10px;
     font-size:.9rem;
 }
+
 
 .buttons button:hover {
     background-color: var(--primary);

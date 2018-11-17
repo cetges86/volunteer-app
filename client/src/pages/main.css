@@ -4,7 +4,7 @@
     --primary: #3aafa9;
     --med: #2B7A78;
     --white: #FEFFFF;
-    --shadow: 0 1px 5px rgba(207, 207, 207, 0.8);
+    --shadow: 0 1px 5px rgba(58, 53, 53, 0.8);
     --bold: 'Rubik', serif;
     --script: 'Dancing Script', cursive;
 }
@@ -160,4 +160,29 @@ body {
 
 #signup-banner {
     color:var(--primary);
+}
+
+/* Main Page */
+
+.sidebar {
+    height:100%;
+    padding:5%;
+    border-right: 1px solid var(--light);
+}
+
+.main-layout {
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.post {
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    margin:1rem;
+    padding:1rem;
+}
+
+textarea {
+    height: 3rem;
+    resize: none;
 }

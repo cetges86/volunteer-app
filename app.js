@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 
-var port = process.env.PORT || '3001';
 
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -20,10 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
-
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/volunteer";
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,8 +36,15 @@ app.use(function(err, req, res, next) {
   res.json('error'+ err);
 });
 
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/volunteer";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
+var port = process.env.PORT || '3001';
 app.listen(port, () => {
   console.log("Server started on port: " + port);
+  process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
 });
+
 
 module.exports = app;

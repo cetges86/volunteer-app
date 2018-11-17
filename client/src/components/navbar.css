@@ -1,11 +1,10 @@
 .navbar {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    height: 3em;
-    border-bottom: 2px solid black;
+    /* height: 3em; */
     margin-bottom: 1em;
     justify-content: space-evenly;
-    border-bottom: var(--shadow);
+    border-bottom: .5px solid var(--light);
 }
 
 .navbar-banner {
@@ -15,7 +14,7 @@
     position: relative;
     margin-left: 1.5rem;
     color:var(--primary);
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     height: 3em;
     padding: 5px;
     font-size: 1.5rem;
@@ -23,8 +22,10 @@
 
 .navbar-links {
     display: grid;
+    text-align: center;
+    font-size:16px;
     grid-column: 2/3;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 1em;
     padding: 5px;
     margin-right: 1rem;

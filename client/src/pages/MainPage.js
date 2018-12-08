@@ -6,6 +6,13 @@ import Sidebar from "../components/Sidebar";
 
 class MainPage extends Component {
 
+    componentDidMount() {
+        API.getAllPosts().then(res => {
+            console.log(res);
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <div>

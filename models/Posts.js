@@ -18,8 +18,11 @@ var PostSchema = new Schema({
   peopleNeeded: {
       type: Number,
       required:false
+  },
+  description: {
+    type: String,
+    required:false
   }
-  
 });
 
 // This creates our model from the above schema, using mongoose's model method

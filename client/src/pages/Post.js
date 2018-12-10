@@ -9,20 +9,22 @@ class Post extends Component {
         title: "",
         date: "",
         peopleNeeded: 0,
-        description: ""
+        description: "",
+        author:""
     }
 
     handleSubmit = () => {
-        console.log(this.state);
+        console.log(this.state); 
         let newPost = {
             title: this.state.title,
             date: this.state.date,
             peopleNeeded: parseInt(this.state.peopleNeeded, 10),
             description: this.state.description
         }
+
         API.addNewPost(newPost).then(((res => {
             console.log(res);
-            this.props.history.push(`/main}`)
+            this.props.history.push(`/main`)
             //<Redirect to ={`/user/${res.data._id}`}/>
         }))) //go to welcome page 
             .catch(err => console.log(err));
@@ -41,7 +43,8 @@ class Post extends Component {
                             onChange={event => this.setState({ title: event.target.value })} />
                         <label>Date</label>
                         <input className="signup-inputs" type="date" placeholder="Date"
-                            onChange={event => this.setState({ date: event.target.value })} ></input>
+                            onChange={event => 
+                            this.setState({ date: event.target.value })} ></input>
                         <label>Number of Helpers Needed</label>
                         <input className="signup-inputs" type="number" placeholder="Number of Volunteers Needed"
                             onChange={event => this.setState({ peopleNeeded: event.target.value })} ></input>

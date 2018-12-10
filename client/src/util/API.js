@@ -10,9 +10,9 @@ export default {
   addNewPost:function(postBody) {
     return axios.post("/api/posts", postBody)
   },
-  login: function (loginInfo) {
-    return axios.post("/api/users/signIn", loginInfo);
-  }
+  // login: function (loginInfo) {
+  //   return axios.post("/api/users/signIn", loginInfo);
+  // }
 //   createUser: function (userData) {
 //     return axios.post("/api/users/signUp", userData);
 //   },

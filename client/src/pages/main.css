@@ -175,7 +175,7 @@ body {
     grid-template-columns: 1fr 4fr;
 }
 
-.post {
+.vol-post {
     border-radius: 5px;
     box-shadow: var(--shadow);
     margin:1rem;
@@ -185,4 +185,16 @@ body {
 textarea {
     height: 3rem;
     resize: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h4 {
+    margin:3px;
+}
+
+h1 {
+    margin:10px;
 }

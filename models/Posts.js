@@ -6,7 +6,6 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new NoteSchema object
 // This is similar to a Sequelize model
 var PostSchema = new Schema({
- 
   title: {
     type: String,
     required: true

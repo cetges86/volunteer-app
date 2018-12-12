@@ -12,6 +12,8 @@ class MainPage extends Component {
     }
 
     componentDidMount = () => {
+        
+
         API.getAllPosts().then(res => {
             console.log(res.data);
             this.setState({posts:res.data})

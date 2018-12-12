@@ -1,9 +1,29 @@
 import React, { Component } from "react";
 import "./main.css";
 import logo from "../img/logo.png";
+import API from "../util/API";
 
 class Login extends Component {
+    state = {
+        email: "",
+        password: "",
+        message:""
+    }
 
+    onSubmit = () => {
+
+        let loginInfo = { email: this.state.email, password: this.state.password }
+        API.login(loginInfo).then(((res, err) => {
+            console.log(res);
+            if (res.request.status === 200) {
+                console.log(res.data.email);
+                sessionStorage.setItem("userName", res.data.email)
+                this.props.history.push(`/main`)
+            }
+        }))
+            .catch(err => this.setState({ message: "user name or password incorrect" })
+            );
+    }
 
 
     render() {
@@ -12,12 +32,15 @@ class Login extends Component {
             <div>
                 <div className="wrapper">
                     <div className="login-box">
-                    <img id="logo" src={logo} alt="logo"></img>
-                        <input className="login-inputs" type="text" placeholder="email"></input>
-                        <input className="login-inputs" type="password" placeholder="password"></input>
+                        <img id="logo" src={logo} alt="logo"></img>
+                        <input className="login-inputs" type="text" placeholder="email"
+                            onChange={event => this.setState({ email: event.target.value })}></input>
+                        <input className="login-inputs" type="password" placeholder="password"
+                            onChange={event => this.setState({ password: event.target.value })}></input>
+                            <p>{this.state.message}</p>
                         <div className="buttons">
                             <button><a href="/signup">New? Sign Up Here</a></button>
-                            <button><a href="/main">Log In</a></button>
+                            <button onClick={this.onSubmit}><a href="/main">Log In</a></button>
                         </div>
                     </div>
                 </div>

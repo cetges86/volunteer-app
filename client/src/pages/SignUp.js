@@ -27,6 +27,13 @@ class SignUp extends Component {
             profileImg: this.state.profileImg
         }
 
+        API.createUser(newUser).then((res => {
+            console.log(res);
+            
+            this.props.history.push('/main');
+        }))
+        .catch(err => console.log(err));
+
         console.log(newUser);
     }
 
@@ -48,8 +55,8 @@ class SignUp extends Component {
                         onChange={event => this.setState({ password: event.target.value })} ></input>
                     <select onChange={event => this.setState({ role: event.target.value })} className="signup-inputs">
                         <option defaultValue="true">Select Your Role</option>
-                        <option>I'm a Teacher</option>
-                        <option>I'm a Parent/Volunteer</option>
+                        <option>Teacher</option>
+                        <option>Parent/Volunteer</option>
                     </select>
                     <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Sign Up</button>
                 </div>

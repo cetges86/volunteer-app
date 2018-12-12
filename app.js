@@ -4,8 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
 const routes = require('./routes');
-// const usersRouter = require('./routes/users');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -13,9 +15,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-
-//app.use('/users', usersRouter);
 
 //THIS CODE DOES SOMETHING THAT BLOCKS MY MONGO CLIENT REQ - EVERYTHING IS A 404
 // catch 404 and forward to error handler
@@ -34,7 +33,19 @@ app.use(function(err, req, res, next) {
   res.json('error'+ err);
 });
 
+//configure session
+app.use(session({ secret: 'etgesapp', cookie: { maxAge: 300000 }, resave: false, saveUninitialized: false }));
+app.use(flash());
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client', 'build')));
+}
 
 app.use(routes);
 

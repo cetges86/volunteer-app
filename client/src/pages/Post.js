@@ -13,6 +13,11 @@ class Post extends Component {
         author:""
     }
 
+    componentDidMount = () => {
+        let loggedInUser = sessionStorage.getItem("userName");
+        this.setState({author:loggedInUser});
+    }
+
     handleSubmit = () => {
         console.log(this.state); 
         let newPost = {
@@ -38,6 +43,7 @@ class Post extends Component {
                     <h1 className="center" id="signup-banner">Create New Volunteer Posting</h1>
 
                     <div className="wrapper signup-form">
+                        <h4>Author: {this.state.author}</h4>
                         <label>Event Title</label>
                         <input className="signup-inputs" type="text" placeholder="Title"
                             onChange={event => this.setState({ title: event.target.value })} />

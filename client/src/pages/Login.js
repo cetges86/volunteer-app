@@ -14,20 +14,24 @@ class Login extends Component {
 
         let loginInfo = { email: this.state.email, password: this.state.password }
         API.login(loginInfo).then(((res, err) => {
-            console.log(res);
+            console.log("response" + res.data);
             if (res.request.status === 200) {
-                console.log(res.data.email);
+                console.log(res.data);
                 sessionStorage.setItem("userName", res.data.email)
-                this.props.history.push(`/main`)
+                sessionStorage.setItem("name", res.data.name)
+                sessionStorage.setItem("userRole", res.data.role)
+                if (res.data.role === "Teacher"){
+                    this.props.history.push(`/teachermain`)
+                } else if(res.data.role === "Parent/Volunteer") {
+                    this.props.history.push(`/main`)
+                }
             }
         }))
             .catch(err => this.setState({ message: "user name or password incorrect" })
             );
     }
 
-
     render() {
-
         return (
             <div>
                 <div className="wrapper">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "../pages/main.css"
 
-class Listing extends Component {
+class VolListing extends Component {
 
 
 
@@ -13,11 +13,11 @@ class Listing extends Component {
                     <li>Number of Helpers: {this.props.peopleNeeded}</li>
                     <li>{this.props.description}</li>
                 </ul>
-                <button>Edit</button><button>Delete</button>
+                <button>Sign Up!</button>
             </li>
         )
     }
 
 }
 
-export default Listing;
+export default VolListing;

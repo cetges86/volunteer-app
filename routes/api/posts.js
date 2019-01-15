@@ -7,4 +7,7 @@ router.route("/")
 .get(postController.getAll)
 .post(postController.create);
 
+router.route("/:author")
+.get(postController.getMany);
+
 module.exports = router;

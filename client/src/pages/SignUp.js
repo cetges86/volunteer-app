@@ -29,7 +29,10 @@ class SignUp extends Component {
 
         API.createUser(newUser).then((res => {
             console.log(res);
-            
+            sessionStorage.setItem("userName", res.data.email)
+            sessionStorage.setItem("name", res.data.name)
+            sessionStorage.setItem("userRole", res.data.role)
+
             this.props.history.push('/main');
         }))
         .catch(err => console.log(err));

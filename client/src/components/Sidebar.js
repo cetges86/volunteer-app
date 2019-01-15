@@ -10,10 +10,11 @@ class Sidebar extends Component {
     }
 
     componentDidMount = () => {
-        let loggedInUser = localStorage.getItem("userName");
+        let loggedInUser = sessionStorage.getItem("userName");
         console.log(loggedInUser);
         API.getUser(loggedInUser).then(res => {
             console.log(res.data);
+            //sessionStorage.setItem("userRole", res.data.role)
             this.setState({name: res.data.name, position:res.data.role})
         })
     }

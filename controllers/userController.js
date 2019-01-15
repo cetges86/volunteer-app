@@ -10,11 +10,15 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     getOne: function (req, res) {
-        console.log(req.params)
-        db.User
-            .findOne({ 'email': req.params.user })
-            .then(dbModel => res.json(dbModel))
-            .catch(err => console.error(err));
+        console.log(req.params.user)
+        if(req.params.user == null) {
+            return "Try Again"
+        } else {
+            db.User
+                .findOne({ 'email': req.params.user })
+                .then(dbModel => res.json(dbModel))
+                .catch(err => console.error(err));
+        }
     },
     createUser: function (req, res) {
         db.User

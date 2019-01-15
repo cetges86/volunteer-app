@@ -6,6 +6,10 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new NoteSchema object
 // This is similar to a Sequelize model
 var PostSchema = new Schema({
+  author: {
+    type:String,
+    require:true
+  },
   title: {
     type: String,
     required: true
@@ -21,6 +25,10 @@ var PostSchema = new Schema({
   description: {
     type: String,
     required:false
+  },
+  volunteers: {
+    type: Array,
+    "default":[]
   }
 });
 

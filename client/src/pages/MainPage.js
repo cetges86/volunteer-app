@@ -13,7 +13,6 @@ class MainPage extends Component {
 
     componentDidMount = () => {
         
-
         API.getAllPosts().then(res => {
             console.log(res.data);
             this.setState({posts:res.data})
@@ -30,7 +29,7 @@ class MainPage extends Component {
                         <Sidebar />
                     </div>
                     <div>
-                        <h1>My Posts</h1>
+                        <h1>All Posts</h1>
                         <ul>
                         {this.state.posts.map(post => {
                     return <Listing

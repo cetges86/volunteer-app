@@ -9,6 +9,13 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
+    getMany: function (req, res) {
+        console.log(req.params)
+        db.Posts
+            .find({ 'author': req.params.author })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => console.error(err));
+    },
     create: function (req, res) {
         console.log('hit', req.body);
         db.Posts

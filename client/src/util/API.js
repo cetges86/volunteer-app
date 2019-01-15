@@ -18,6 +18,9 @@ export default {
   },
   getUser: function(user) {
     return axios.get('/api/users/' + user)
+  },
+  getPostsByAuthor: function(author) {
+    return axios.get('api/posts/' + author)
   }
   //   
   //   logout: function() {

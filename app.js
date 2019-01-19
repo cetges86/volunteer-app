@@ -8,13 +8,17 @@ const passport = require('passport');
 const session = require('express-session');
 const routes = require('./routes');
 const flash = require('connect-flash');
+var bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true, parameterLimit: 50000 }));
 
 //THIS CODE DOES SOMETHING THAT BLOCKS MY MONGO CLIENT REQ - EVERYTHING IS A 404
 // catch 404 and forward to error handler
@@ -23,14 +27,14 @@ app.use(cookieParser());
 // });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.json('error'+ err);
+  res.json('error' + err);
 });
 
 //configure session

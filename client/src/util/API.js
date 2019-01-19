@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default {
-  // uploadImage: function () {
-  //   return axios.post("cloudinary upload");
-  // },
+  uploadImage: function (image) {
+    return axios.post("/api/users/image/", image);
+  },
   getAllPosts: function () {
     return axios.get("/api/posts")
   },

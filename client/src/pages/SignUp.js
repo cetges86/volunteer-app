@@ -2,20 +2,24 @@ import React, { Component } from "react";
 import API from "../util/API";
 import "./main.css";
 
+
+
 class SignUp extends Component {
 
     state = {
-        name: "",
-        email: "",
-        password: "",
-        role: "",
-        profileImg: null
+        name: '',
+        email: '',
+        password: '',
+        role: '',
+        imgURL:''
     }
 
     fileSelect = (event) => {
-        this.setState({ profileImg: event.target.files[0]});
-        console.log(this.state.profileImg)
-        API.uploadImage(this.state.profileImg);
+        let profileImg = event.target.files[0];
+        API.uploadImage(profileImg)
+            .then(image => {
+                console.log(image);
+            })
     }
 
     handleSubmit = () => {

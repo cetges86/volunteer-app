@@ -33,7 +33,7 @@ class TeacherMain extends Component {
                         <h1>My Posts</h1>
 
                         { //Check if user has posts
-                            (this.state.posts.length == 0)
+                            (this.state.posts.length === 0)
                                 ? <div> You have no posts. Create One! </div>
                                 : <ul>
                                     {this.state.posts.map(post => {

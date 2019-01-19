@@ -15,6 +15,10 @@ router
 router.route("/:user")
 .get(userController.getOne)
 
+//cloudinary API upload
+router.route("/image")
+.post(userController.uploadImage)
+
 router.route("/signUp")
 .post(userController.createUser);
 

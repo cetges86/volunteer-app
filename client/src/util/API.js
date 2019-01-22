@@ -16,11 +16,14 @@ export default {
   login: function (loginInfo) {
     return axios.post("/api/users/signIn", loginInfo);
   },
-  getUser: function(user) {
+  getUser: function (user) {
     return axios.get('/api/users/' + user)
   },
-  getPostsByAuthor: function(author) {
+  getPostsByAuthor: function (author) {
     return axios.get('api/posts/' + author)
+  },
+  editPost: function (id, volunteer) {
+    return axios.put("/api/posts/" + id , volunteer)
   }
   //   
   //   logout: function() {

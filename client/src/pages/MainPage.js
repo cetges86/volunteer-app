@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../util/API";
 import Navbar from "../components/Navbar"
-import Listing from "../components/Listing"
+import VolListing from "../components/VolListing"
 import "./main.css";
 import Sidebar from "../components/Sidebar";
 
@@ -32,7 +32,7 @@ class MainPage extends Component {
                         <h1>All Posts</h1>
                         <ul>
                         {this.state.posts.map(post => {
-                    return <Listing
+                    return <VolListing
                         key={post._id}
                         {...post} />
                 })}

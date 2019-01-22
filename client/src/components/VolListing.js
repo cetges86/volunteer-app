@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import "../pages/main.css"
+import API from "../util/API";
+
 
 class VolListing extends Component {
 
+    handleClick = () => {
+        console.log(this.props.volunteers[0]);
+        let volunteer = sessionStorage.getItem("userName");
+        API.editPost(this.props._id, volunteer)
+            .then(res => {
+                console.log(res);
+            })
+    }
 
 
     render() {
@@ -13,7 +23,7 @@ class VolListing extends Component {
                     <li>Number of Helpers: {this.props.peopleNeeded}</li>
                     <li>{this.props.description}</li>
                 </ul>
-                <button>Sign Up!</button>
+                <button onClick={this.handleClick}>Sign Up!</button>
             </li>
         )
     }

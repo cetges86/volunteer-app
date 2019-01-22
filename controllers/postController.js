@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 
 module.exports = {
     getAll: function (req, res) {
-      db.Posts
-        .find(req.query)
-        .sort({ name: -1 })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        db.Posts
+            .find(req.query)
+            .sort({ name: -1 })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
     getMany: function (req, res) {
         console.log(req.params)
@@ -19,10 +19,18 @@ module.exports = {
     create: function (req, res) {
         console.log('hit', req.body);
         db.Posts
-          .create(req.body)
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
-      }
+            .create(req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    volSignUp: function (req, res) {
+        console.log(req.body)
+        db.Posts
+            .findByIdAndUpdate({ _id: req.params.id },
+                { volunteers: req.body })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => console.error(err));
+    }
 
 
 }

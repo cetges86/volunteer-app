@@ -10,4 +10,7 @@ router.route("/")
 router.route("/:author")
 .get(postController.getMany);
 
+router.route("/:id")
+.put(postController.volSignUp)
+
 module.exports = router;

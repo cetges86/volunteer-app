@@ -7,22 +7,22 @@ class Login extends Component {
     state = {
         email: "",
         password: "",
-        message:""
+        message: ""
     }
 
-    onSubmit = () => {
-
+    onSubmit = (event) => {
+        event.preventDefault();
         let loginInfo = { email: this.state.email, password: this.state.password }
         API.login(loginInfo).then(((res, err) => {
-            console.log("response" + res.data);
+            console.log("response" + JSON.stringify(res.data));
             if (res.request.status === 200) {
                 console.log(res.data);
                 sessionStorage.setItem("userName", res.data.email)
                 sessionStorage.setItem("name", res.data.name)
                 sessionStorage.setItem("userRole", res.data.role)
-                if (res.data.role === "Teacher"){
+                if (res.data.role === "Teacher") {
                     this.props.history.push(`/teachermain`)
-                } else if(res.data.role === "Parent/Volunteer") {
+                } else if (res.data.role === "Parent/Volunteer") {
                     this.props.history.push(`/main`)
                 }
             }
@@ -41,7 +41,7 @@ class Login extends Component {
                             onChange={event => this.setState({ email: event.target.value })}></input>
                         <input className="login-inputs" type="password" placeholder="password"
                             onChange={event => this.setState({ password: event.target.value })}></input>
-                            <p>{this.state.message}</p>
+                        <p>{this.state.message}</p>
                         <div className="buttons">
                             <button><a href="/signup">New? Sign Up Here</a></button>
                             <button onClick={this.onSubmit}><a href="/main">Log In</a></button>

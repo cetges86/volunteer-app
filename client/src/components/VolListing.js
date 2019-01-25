@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 import "../pages/main.css"
 import API from "../util/API";
+import VolArray from "./VolArray";
 
 
 class VolListing extends Component {
 
+    state = {
+        value: ''
+    }
+
+    onChange(e) {
+        this.setState({ value: e.target.value });
+      }
+
     handleClick = () => {
-        console.log(this.props.volunteers[0]);
-        let volunteer = sessionStorage.getItem("userName");
+        let volunteer = {
+            email: sessionStorage.getItem("userName"),
+            name: sessionStorage.getItem("name")
+        };
         API.editPost(this.props._id, volunteer)
             .then(res => {
                 console.log(res);
+                this.setState({
+                     clicked: !this.state.clicked 
+                    })
             })
     }
 
@@ -22,8 +36,14 @@ class VolListing extends Component {
                 <ul>
                     <li>Number of Helpers: {this.props.peopleNeeded}</li>
                     <li>{this.props.description}</li>
+                    <li>Volunteers:</li>
+                    <ul>
+                        {this.props.volunteers.map((volunteer, i) => {
+                            return <VolArray key={i} {...volunteer} />
+                        })}
+                    </ul>
                 </ul>
-                <button onClick={this.handleClick}>Sign Up!</button>
+                <button onChange={this.onChange} disabled={!this.state.value} onClick={this.handleClick}>{this.props.volunteers.length >= this.props.peopleNeeded ? 'Full' : 'Sign Up'}</button>
             </li>
         )
     }

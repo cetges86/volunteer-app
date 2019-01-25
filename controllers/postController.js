@@ -27,7 +27,14 @@ module.exports = {
         console.log(req.body)
         db.Posts
             .findByIdAndUpdate({ _id: req.params.id },
-                { volunteers: req.body })
+                {
+                    $push: {
+                        'volunteers':
+                            { "name": req.body.name, "email": req.body.email }
+                    }
+                },
+                { new: true })
+            // .then(dbModel => console.log(dbModel.volunteers))
             .then(dbModel => res.json(dbModel))
             .catch(err => console.error(err));
     }

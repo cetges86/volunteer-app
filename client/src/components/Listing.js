@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "../pages/main.css"
+import VolArray from "./VolArray";
 
 class Listing extends Component {
 
@@ -12,6 +13,12 @@ class Listing extends Component {
                 <ul>
                     <li>Number of Helpers: {this.props.peopleNeeded}</li>
                     <li>{this.props.description}</li>
+                <li>Volunteers Signed Up:</li>
+                    <ul>
+                        {this.props.volunteers.map((volunteer, i) => {
+                            return <VolArray key={i} {...volunteer} />
+                        })}
+                    </ul>
                 </ul>
                 <button>Edit</button><button>Delete</button>
             </li>

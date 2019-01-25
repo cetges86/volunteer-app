@@ -12,12 +12,12 @@ class MainPage extends Component {
     }
 
     componentDidMount = () => {
-        
+
         API.getAllPosts().then(res => {
             console.log(res.data);
-            this.setState({posts:res.data})
+            this.setState({ posts: res.data })
         })
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     render() {
@@ -31,15 +31,15 @@ class MainPage extends Component {
                     <div>
                         <h1>All Posts</h1>
                         <ul>
-                        {this.state.posts.map(post => {
-                    return <VolListing
-                        key={post._id}
-                        {...post} />
-                })}
+                            {this.state.posts.map(post => {
+                                return <VolListing
+                                    key={post._id}
+                                    {...post} />
+                            })}
                         </ul>
                     </div>
                 </div>
-                
+
             </div>
 
 

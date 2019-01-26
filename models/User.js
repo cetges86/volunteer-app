@@ -29,7 +29,6 @@ var UserSchema = new Schema({
     grade: {
         type: String
     },
-
     photo: {
         type: String
     }

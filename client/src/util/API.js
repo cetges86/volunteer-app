@@ -1,9 +1,6 @@
 import axios from "axios";
 
 export default {
-  uploadImage: function (image) {
-    return axios.post("/api/users/image/", image);
-  },
   getAllPosts: function () {
     return axios.get("/api/posts")
   },
@@ -24,15 +21,11 @@ export default {
   },
   editPost: function (id, volunteer) {
     return axios.put("/api/posts/" + id , volunteer)
+  },
+  deletePost:function (id) {
+    return axios.delete("/api/posts/" + id);
   }
-  //   
-  //   logout: function() {
-  //     return axios.get("/api/users/logout");
-  //   },
   //   checkAuthenticated: function () {
   //     return axios.get("/api/users/authenticated")
-  //   },
-  //   getJobs: function(jobTerm) {
-  //     return axios.get("/api/users/jobs/"+ jobTerm)
   //   }
 };

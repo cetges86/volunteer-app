@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../util/API";
+import "../pages/main.css"
 
 class Sidebar extends Component {
 
@@ -15,7 +16,7 @@ class Sidebar extends Component {
         API.getUser(loggedInUser).then(res => {
             console.log(res.data);
             //sessionStorage.setItem("userRole", res.data.role)
-            this.setState({name: res.data.name, position:res.data.role})
+            this.setState({name: res.data.name, position:res.data.role, imageURL:res.data.photo})
         })
     }
 
@@ -25,7 +26,7 @@ class Sidebar extends Component {
         return (
             <div className="sidebar">
                 <ul>
-                    <img src="https://fillmurray.com/200/200"></img>
+                    <img className ="img-thumbnail" src={this.state.imageURL}></img>
                     <li>
                         {this.state.name}
                     </li>

@@ -7,12 +7,8 @@ import VolArray from "./VolArray";
 class VolListing extends Component {
 
     state = {
-        value: ''
+        value: true
     }
-
-    onChange(e) {
-        this.setState({ value: e.target.value });
-      }
 
     handleClick = () => {
         let volunteer = {
@@ -23,9 +19,11 @@ class VolListing extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({
-                     clicked: !this.state.clicked 
+                     value: false
                     })
             })
+
+        this.forceUpdate();
     }
 
 
@@ -43,7 +41,7 @@ class VolListing extends Component {
                         })}
                     </ul>
                 </ul>
-                <button onChange={this.onChange} disabled={!this.state.value} onClick={this.handleClick}>{this.props.volunteers.length >= this.props.peopleNeeded ? 'Full' : 'Sign Up'}</button>
+                <button disabled={!this.state.value || this.props.volunteers.length >= this.props.peopleNeeded} onClick={this.handleClick}>{this.props.volunteers.length >= this.props.peopleNeeded ? 'Full' : 'Sign Up'}</button>
             </li>
         )
     }

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import API from "../util/API";
 import "./main.css";
-
+import classNames from 'classnames';
+import Dropzone from "react-dropzone";
+import axios from "axios";
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/volunteer-app/image/upload'
+const CLOUDINARY_UPLOAD_PRESET = "lgrrdhwa"
 
 
 class SignUp extends Component {
@@ -11,16 +15,35 @@ class SignUp extends Component {
         email: '',
         password: '',
         role: '',
-        imgURL:''
+        imgURL: 'https://fillmurray.com/200/200',
+        uploaded: false
     }
 
-    fileSelect = (event) => {
-        let profileImg = event.target.files[0];
-        API.uploadImage(profileImg)
-            .then(image => {
-                console.log(image);
-            })
+    onDrop = (acceptedFiles, rejectedFiles) => {
+        const image = acceptedFiles[0];
+        const formData = new FormData();
+        formData.append('file', image);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+
+        axios({
+            url: CLOUDINARY_URL,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: formData
+        }).then(response => {
+            console.log(response);
+            console.log(response.data.secure_url);
+            this.setState({
+                imgURL: response.data.secure_url,
+                uploaded: true
+            });
+        }).catch(err => {
+            console.log(err);
+        });
     }
+
 
     handleSubmit = () => {
         let newUser = {
@@ -28,7 +51,7 @@ class SignUp extends Component {
             email: this.state.email,
             password: this.state.password,
             role: this.state.role,
-            profileImg: this.state.profileImg
+            photo: this.state.imgURL
         }
 
         API.createUser(newUser).then((res => {
@@ -39,7 +62,7 @@ class SignUp extends Component {
 
             this.props.history.push('/main');
         }))
-        .catch(err => console.log(err));
+            .catch(err => console.log(err));
 
         console.log(newUser);
     }
@@ -47,13 +70,33 @@ class SignUp extends Component {
 
 
     render() {
+
         return (
             <div>
                 <h1 className="center" id="signup-banner">Sign Up to Be a Good Helper</h1>
-                <div className="center img-thumbnail"><img src={this.state.profileImg} alt="profile"></img></div>
+                {this.state.uploaded ? <div className="center"><img className='img-thumbnail' src={this.state.imgURL} alt="profile"></img></div>
+                    :
+                    <Dropzone onDrop={this.onDrop}>
+                        {({ getRootProps, getInputProps, isDragActive }) => {
+                            return (
+                                <div
+                                    {...getRootProps()}
+                                    className={classNames('dropzone', { 'dropzone--isActive': isDragActive })}
+                                >
+                                    <input {...getInputProps()} />
+                                    {
+                                        isDragActive ?
+                                            <p>Drop files here...</p> :
+                                            <p>Try dropping some files here, or click to select files to upload.</p>
+                                    }
+                                </div>
+                            )
+                        }}
+                    </Dropzone>
+                }
                 <div className="wrapper signup-form">
-                    <input id="photo-file-input" className="center" type="file"
-                        onChange={this.fileSelect}></input>
+                    
+
                     <input className="signup-inputs" type="text" placeholder="Name"
                         onChange={event => this.setState({ name: event.target.value })} />
                     <input className="signup-inputs" type="email" placeholder="Email Address"
@@ -72,5 +115,6 @@ class SignUp extends Component {
         )
     }
 }
+
 
 export default SignUp;

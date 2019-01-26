@@ -198,3 +198,19 @@ h4 {
 h1 {
     margin:10px;
 }
+
+/* SIGN UP PAGE */
+
+.img-thumbnail {
+    max-width: 150px;
+    border-radius: 50%;
+    border:4px dashed var(--light);
+}
+
+.dropzone {
+    max-width: 80%;
+    padding:1rem;
+    margin:auto;
+    text-align: center;
+    border:2px dashed var(--light);
+}

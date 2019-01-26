@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import "../pages/main.css"
 import VolArray from "./VolArray";
+import API from '../util/API';
 
 class Listing extends Component {
 
-
+    deletePost = () => {
+        API.deletePost(this.props._id)
+            .then(res => {
+                console.log(res);
+            })
+    }
 
     render() {
         return (
@@ -13,14 +19,15 @@ class Listing extends Component {
                 <ul>
                     <li>Number of Helpers: {this.props.peopleNeeded}</li>
                     <li>{this.props.description}</li>
-                <li>Volunteers Signed Up:</li>
+                    <li>Volunteers Signed Up:</li>
                     <ul>
-                        {this.props.volunteers.map((volunteer, i) => {
-                            return <VolArray key={i} {...volunteer} />
-                        })}
+                        {this.props.volunteers.length === 0 ? <li>No One has signed up yet</li> :
+                            this.props.volunteers.map((volunteer, i) => {
+                                return <VolArray key={i} {...volunteer} />
+                            })}
                     </ul>
                 </ul>
-                <button>Edit</button><button>Delete</button>
+                <button><a href={`edit/${this.props._id}`}>Edit</a></button><button onClick={this.deletePost}>Delete</button>
             </li>
         )
     }

@@ -19,10 +19,13 @@ export default {
   getPostsByAuthor: function (author) {
     return axios.get('api/posts/' + author)
   },
-  editPost: function (id, volunteer) {
-    return axios.put("/api/posts/" + id , volunteer)
+  getPostById: function (id) {
+    return axios.get('/api/posts/' + id)
   },
-  deletePost:function (id) {
+  editPost: function (id, volunteer) {
+    return axios.put("/api/posts/" + id, volunteer)
+  },
+  deletePost: function (id) {
     return axios.delete("/api/posts/" + id);
   }
   //   checkAuthenticated: function () {

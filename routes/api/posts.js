@@ -11,6 +11,8 @@ router.route("/:author")
 .get(postController.getMany);
 
 router.route("/:id")
+.get(postController.getById)
 .put(postController.volSignUp)
+.delete(postController.delete)
 
 module.exports = router;

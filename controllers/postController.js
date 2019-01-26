@@ -15,6 +15,12 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => console.error(err));
     },
+    getById: function (req, res) {
+        console.log("worked! " + req.params.id);
+        db.Posts.findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => console.error(err));
+    },
     create: function (req, res) {
         console.log('hit', req.body);
         db.Posts
@@ -36,6 +42,11 @@ module.exports = {
             // .then(dbModel => console.log(dbModel.volunteers))
             .then(dbModel => res.json(dbModel))
             .catch(err => console.error(err));
+    },
+    delete: function (req, res) {
+        db.Posts.deleteOne({ _id: req.params.id })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => console.log(err));
     }
 
 

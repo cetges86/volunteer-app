@@ -17,7 +17,7 @@ export default {
     return axios.get('/api/users/' + user)
   },
   getPostsByAuthor: function (author) {
-    return axios.get('api/posts/' + author)
+    return axios.get('/api/posts/author/' + author)
   },
   getPostById: function (id) {
     return axios.get('/api/posts/' + id)

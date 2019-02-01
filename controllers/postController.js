@@ -15,11 +15,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => console.error(err));
     },
-    getById: function (req, res) {
-        console.log("worked! " + req.params.id);
-        db.Posts.findById(req.params.id)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => console.error(err));
+    findById: function (req, res) {
+        if (mongoose.Types.ObjectId.isValid(req.params.id)) {
+            db.Posts
+                .findById(req.params.id)
+                .then(dbModel => res.json(dbModel))
+                .catch(err => res.status(422).json(err));
+        }
     },
     create: function (req, res) {
         console.log('hit', req.body);

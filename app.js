@@ -61,7 +61,7 @@ mongoose.connect(MONGODB_URI);
 var port = process.env.PORT || '3001';
 app.listen(port, () => {
   console.log("Server started on port: " + port);
-  //process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
+  process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
 });
 
 

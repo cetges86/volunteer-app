@@ -7,12 +7,13 @@ router.route("/")
 .get(postController.getAll)
 .post(postController.create);
 
-router.route("/:author")
-.get(postController.getMany);
-
 router.route("/:id")
-.get(postController.getById)
+.get(postController.findById)
 .put(postController.volSignUp)
 .delete(postController.delete)
+
+router.route("/author/:author")
+.get(postController.getMany);
+
 
 module.exports = router;

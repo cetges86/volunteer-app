@@ -199,6 +199,11 @@ h1 {
     margin:10px;
 }
 
+.vol-list {
+    display:inline;
+}
+
+
 /* SIGN UP PAGE */
 
 .img-thumbnail {

@@ -4,7 +4,7 @@ class VolListing extends Component {
 
     render() {
         return (
-            <li><a href={"mailto:"+ this.props.email}>{this.props.name}</a></li>
+            <li className="vol-list"><a href={"mailto:"+ this.props.email}>{this.props.name} | </a></li>
         )}
 }
 

@@ -9,21 +9,35 @@ class VolListing extends Component {
     state = {
         value: true
     }
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.volunteers.length !== prevProps.volunteers.length) {
+          this.forceUpdate();
+        }
+      }
 
     handleClick = () => {
         let volunteer = {
             email: sessionStorage.getItem("userName"),
             name: sessionStorage.getItem("name")
         };
-        API.editPost(this.props._id, volunteer)
+        // $('#datepicker').datepicker().change(evt => {
+        //     var selectedDate = $('#datepicker').datepicker('getDate');
+        //     var now = new Date();
+        //     now.setHours(0,0,0,0);
+        //     if (selectedDate < now) {
+        //       console.log("Selected date is in the past");
+        //     } else {
+        //       console.log("Selected date is NOT in the past");
+        //     }
+        //   });
+        API.signUpForPost(this.props._id, volunteer)
             .then(res => {
                 console.log(res);
                 this.setState({
                      value: false
                     })
             })
-
-        this.forceUpdate();
     }
 
 

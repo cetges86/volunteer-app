@@ -7,6 +7,7 @@ import Main from "./pages/MainPage";
 import Post from "./pages/Post";
 import TeacherMain from './pages/TeacherMain';
 import editPost from "./pages/editPost";
+import editUser from './pages/editUser';
 
 class App extends Component {
     render() {
@@ -16,10 +17,12 @@ class App extends Component {
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/main" component={Main} />
+            <Route exact path="/myaccount" component={editUser} />
             <Route exact path="/createpost" component={Post} />
             <Route exact path="/teachermain" component={TeacherMain} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/edit/:id" component={editPost}/>
+            
           </Switch>
         </Router>
       );

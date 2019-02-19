@@ -39,7 +39,7 @@ class Navbar extends Component {
                     </div>
                     : <div id="myTopnav" className="navbar-links">
                         {/* <a className="links-right" href="/main">Main</a> */}
-                        <a className="links-right" href="/createpost">New Post</a>
+                        {/* <a className="links-right" href="/createpost">New Post</a> */}
                         <a className="links-right" href="/main">View All Postings</a>
                         <a className="links-right" href="/myaccount">My Account</a>
                         <a className="links-right" href="/logout">Logout</a>

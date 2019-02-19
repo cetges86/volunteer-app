@@ -45,6 +45,13 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => console.error(err));
     },
+    edit: function (req, res){
+        console.log(req.body);
+        db.Posts
+            .findByIdAndUpdate({_id: req.params.id}, req.body)
+            .then(dbModel =>res.json(dbModel))
+            .catch(err => console.error(err));
+    },
     delete: function (req, res) {
         db.Posts.deleteOne({ _id: req.params.id })
             .then(dbModel => res.json(dbModel))

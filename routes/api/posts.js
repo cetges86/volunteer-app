@@ -12,6 +12,9 @@ router.route("/:id")
 .put(postController.volSignUp)
 .delete(postController.delete)
 
+router.route("/edit/:id")
+.put(postController.edit)
+
 router.route("/author/:author")
 .get(postController.getMany);
 

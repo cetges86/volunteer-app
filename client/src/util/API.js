@@ -22,8 +22,11 @@ export default {
   getPostById: function (id) {
     return axios.get('/api/posts/' + id)
   },
-  editPost: function (id, volunteer) {
+  signUpForPost: function (id, volunteer) {
     return axios.put("/api/posts/" + id, volunteer)
+  },
+  editPost: function (id, editedPost) {
+    return axios.put("/api/posts/edit/" + id, editedPost)
   },
   deletePost: function (id) {
     return axios.delete("/api/posts/" + id);

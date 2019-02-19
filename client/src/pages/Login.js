@@ -15,7 +15,7 @@ class Login extends Component {
         event.preventDefault();
         let loginInfo = { email: this.state.email, password: this.state.password }
         API.login(loginInfo).then(((res, err) => {
-            console.log("response" + JSON.stringify(res.data));
+            // console.log("response" + JSON.stringify(res.data));
             if (res.request.status === 200) {
                 console.log(res.data);
                 sessionStorage.setItem("userName", res.data.email)

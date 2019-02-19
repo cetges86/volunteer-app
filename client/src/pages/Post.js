@@ -26,7 +26,7 @@ class Post extends Component {
         let newPost = {
             author: this.state.author,
             title: this.state.title,
-            date: this.state.date.substring(0,10),
+            date: this.state.date.substring(0, 10),
             peopleNeeded: parseInt(this.state.peopleNeeded, 10),
             description: this.state.description
         }

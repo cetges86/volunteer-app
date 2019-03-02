@@ -34,7 +34,7 @@ class TeacherMain extends Component {
 
                         { //Check if user has posts
                             (this.state.posts.length === 0)
-                                ? <div> You have no posts. <button><a href="/createpost">Create One!</a></button> </div>
+                                ? <div> You have no posts.  <button className="small-btn"><a href="/createpost">Create One!</a></button> </div>
                                 : <ul>
                                     {this.state.posts.map(post => {
                                         return <Listing

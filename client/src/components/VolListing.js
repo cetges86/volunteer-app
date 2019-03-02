@@ -55,7 +55,8 @@ class VolListing extends Component {
                         })}
                     </ul>
                 </ul>
-                <button disabled={!this.state.value || this.props.volunteers.length >= this.props.peopleNeeded} onClick={this.handleClick}>{this.props.volunteers.length >= this.props.peopleNeeded ? 'Full' : 'Sign Up'}</button>
+                <br/>
+                <button className="small-btn" disabled={!this.state.value || this.props.volunteers.length >= this.props.peopleNeeded} onClick={this.handleClick}>{this.props.volunteers.length >= this.props.peopleNeeded ? 'Full' : 'Sign Up'}</button>
             </li>
         )
     }

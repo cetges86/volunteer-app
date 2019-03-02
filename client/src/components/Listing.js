@@ -27,7 +27,8 @@ class Listing extends Component {
                             })}
                     </ul>
                 </ul>
-                <button><a href={`edit/${this.props._id}`}>Edit</a></button><button onClick={this.deletePost}>Delete</button>
+                <br/>
+                <button className="small-btn"><a href={`edit/${this.props._id}`}>Edit</a></button><button className="small-btn" onClick={this.deletePost}>Delete</button>
             </li>
         )
     }

@@ -99,6 +99,30 @@ body {
     font-size:.9rem;
 }
 
+.small-btn {
+    justify-self: center;
+    width:100px;
+    padding:5px;
+    background-color: var(--med);
+    color:var(--white);
+    border-radius: 10px;
+    font-size:.6rem;
+    margin:3px;
+}
+
+.small-btn:disabled {
+    background-color: var(--light);
+    color:var(--dark);
+}
+
+select {
+    width:50%;
+    height: 2rem;
+    font-family: 'Quicksand', sans-serif;
+    color:var(--med);
+    background-color: var(--light);
+}
+
 /* LOGIN PAGE */
 
 .login-box {
@@ -213,9 +237,9 @@ h1 {
 }
 
 .dropzone {
-    max-width: 80%;
+    max-width: 60%;
     padding:1rem;
-    margin:auto;
+    margin:1rem auto;
     text-align: center;
-    border:2px dashed var(--light);
+    border:2px dashed var(--med);
 }

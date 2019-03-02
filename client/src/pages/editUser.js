@@ -87,7 +87,7 @@ class editUser extends Component {
         return (
             <div>
                 <Navbar />
-                {this.state.keepImage ? <div className="center"><img className='img-thumbnail' src={this.state.imgURL} alt="profile"></img></div>
+                {this.state.keepImage ? <div className="center"><img className='img-thumbnail' src={this.state.imageURL} alt="profile"></img></div>
                     :
                     <Dropzone onDrop={this.onDrop}>
                         {({ getRootProps, getInputProps, isDragActive }) => {
@@ -99,16 +99,16 @@ class editUser extends Component {
                                     <input {...getInputProps()} />
                                     {
                                         isDragActive ?
-                                            <p>Drop files here...</p> :
-                                            <p>Try dropping some files here, or click to select files to upload.</p>
-                                    }
+                                        <p>Drop images here...</p> :
+                                        <p>Try dropping a picture here to make it your profile picture! Or click to find an image to use!</p>
+                                }
                                 </div>
                             )
                         }}
                     </Dropzone>
                 }
                 <div className="wrapper signup-form">
-                    <button onClick={event => this.setState({ keepImage: !this.state.keepImage})}>Upload a New Image</button>
+                    <button className="small-btn" onClick={event => this.setState({ keepImage: !this.state.keepImage})}>Upload a New Image</button>
                     <input className="signup-inputs" type="text" placeholder="Name"
                         onChange={event => this.setState({ name: event.target.value })} />
                     <input className="signup-inputs" type="email" placeholder="Email Address"
@@ -118,7 +118,7 @@ class editUser extends Component {
                         <option>Teacher</option>
                         <option>Parent/Volunteer</option>
                     </select>
-                    <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Sign Up</button>
+                    <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Save Changes</button>
 
                 </div>
             </div>

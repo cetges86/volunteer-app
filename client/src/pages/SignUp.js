@@ -86,9 +86,10 @@ class SignUp extends Component {
                                     <input {...getInputProps()} />
                                     {
                                         isDragActive ?
-                                            <p>Drop files here...</p> :
-                                            <p>Try dropping some files here, or click to select files to upload.</p>
+                                            <p>Drop images here...</p> :
+                                            <p>Try dropping a picture here to make it your profile picture! Or click to find an image to use!</p>
                                     }
+                                    <br/>
                                 </div>
                             )
                         }}
@@ -109,6 +110,7 @@ class SignUp extends Component {
                         <option>Parent/Volunteer</option>
                     </select>
                     <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Sign Up</button>
+                    <br/>
                 </div>
 
             </div>

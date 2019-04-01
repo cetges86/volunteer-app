@@ -28,6 +28,9 @@ export default {
   editPost: function (id, editedPost) {
     return axios.put("/api/posts/edit/" + id, editedPost)
   },
+  editUser: function (id, editedUser) {
+    return axios.put("/api/users/edit/" + id, editedUser)
+  },
   deletePost: function (id) {
     return axios.delete("/api/posts/" + id);
   }

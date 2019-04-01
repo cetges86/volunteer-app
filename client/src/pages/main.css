@@ -189,9 +189,14 @@ select {
 /* Main Page */
 
 .sidebar {
+    text-align: center;
     height:100%;
     padding:5%;
     border-right: 1px solid var(--light);
+}
+
+#sidebar-name {
+    color:var(--med);
 }
 
 .main-layout {

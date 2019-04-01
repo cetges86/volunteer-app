@@ -31,5 +31,14 @@ module.exports = {
             .create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    edit: function (req, res){
+        console.log("Body: " + req.body);
+        console.log("Params: " + req.params);
+        console.log(req.params.id)
+        db.User
+            .findByIdAndUpdate({_id: req.params.id}, req.body)
+            .then(dbModel =>res.json(dbModel))
+            .catch(err => console.error(err));
     }
 }

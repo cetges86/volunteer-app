@@ -15,6 +15,9 @@ router
 router.route("/:user")
 .get(userController.getOne)
 
+router.route("/edit/:id")
+.put(userController.edit)
+
 router.route("/signUp")
 .post(userController.createUser);
 

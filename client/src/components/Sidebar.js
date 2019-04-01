@@ -25,15 +25,12 @@ class Sidebar extends Component {
     render(){
         return (
             <div className="sidebar">
-                <ul>
                     <img className ="img-thumbnail" src={this.state.imageURL}></img>
-                    <li>
-                        {this.state.name}
-                    </li>
-                    <li>
+                    <p>
+                       <span id="sidebar-name">{this.state.name}</span> 
+                    <br/>
                         {this.state.position}
-                    </li>
-                </ul>
+                    </p>
             </div>
 
         )

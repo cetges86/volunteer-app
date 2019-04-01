@@ -12,13 +12,21 @@ class MainPage extends Component {
     }
 
     componentDidMount = () => {
-
         API.getAllPosts().then(res => {
             console.log(res.data);
             this.setState({ posts: res.data })
         })
             .catch(err => console.log(err))
     }
+
+    refreshListings = () => {
+        API.getAllPosts().then(res => {
+            console.log(res.data);
+            this.setState({ posts: res.data })
+        })
+            .catch(err => console.log(err))
+    }
+    
 
     render() {
         return (
@@ -33,6 +41,7 @@ class MainPage extends Component {
                         <ul>
                             {this.state.posts.map(post => {
                                 return <VolListing
+                                    refresh = {this.refreshListings}
                                     key={post._id}
                                     {...post} />
                             })}

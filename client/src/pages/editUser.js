@@ -12,8 +12,9 @@ const CLOUDINARY_UPLOAD_PRESET = "lgrrdhwa"
 class editUser extends Component {
 
     state = {
+        id:'',
         name: '',
-        position: '',
+        role: '',
         email: '',
         imageURL: '',
         keepImage: true
@@ -25,9 +26,10 @@ class editUser extends Component {
         API.getUser(loggedInUser).then(res => {
             console.log(res.data);
             this.setState({
+                id: res.data._id,
                 name: res.data.name,
                 email: res.data.email,
-                position: res.data.role,
+                role: res.data.role,
                 imageURL: res.data.photo
             })
         })
@@ -49,7 +51,7 @@ class editUser extends Component {
             console.log(response);
             console.log(response.data.secure_url);
             this.setState({
-                imgURL: response.data.secure_url,
+                imageURL: response.data.secure_url,
                 keepImage: !this.state.keepImage
             });
         }).catch(err => {
@@ -68,19 +70,26 @@ class editUser extends Component {
     }
 
     handleSubmit = () => {
+        let editedUser = {
+            email: this.state.email,
+            name: this.state.name,
+            role: this.state.role,
+            photo: this.state.imageURL
+        }
 
+        let userID = this.state.id;
+        console.log(userID)
+        API.editUser(userID, editedUser).then(res => {
 
-        // API.editUser(editedUser).then(res => {
+            console.log(res);
+            if (this.state.role === "Parent/Volunteer") {
 
-        //     console.log(res);
-        //     if (this.state.role === "Parent/Volunteer") {
-
-        //         this.props.history.push(`/main`)
-        //     } else {
-        //         this.props.history.push('/teachermain')
-        //     }
-        // }
-        // )
+                this.props.history.push(`/main`)
+            } else {
+                this.props.history.push('/teachermain')
+            }
+        }
+        )
     }
 
     render() {
@@ -99,25 +108,26 @@ class editUser extends Component {
                                     <input {...getInputProps()} />
                                     {
                                         isDragActive ?
-                                        <p>Drop images here...</p> :
-                                        <p>Try dropping a picture here to make it your profile picture! Or click to find an image to use!</p>
-                                }
+                                            <p>Drop images here...</p> :
+                                            <p>Try dropping a picture here to make it your profile picture! Or click to find an image to use!</p>
+                                    }
                                 </div>
                             )
                         }}
                     </Dropzone>
                 }
                 <div className="wrapper signup-form">
-                    <button className="small-btn" onClick={event => this.setState({ keepImage: !this.state.keepImage})}>Upload a New Image</button>
+                    <button className="small-btn" onClick={event => this.setState({ keepImage: !this.state.keepImage })}>Upload a New Image</button>
                     <input className="signup-inputs" type="text" placeholder="Name"
-                        onChange={event => this.setState({ name: event.target.value })} />
+                        value={this.state.name || ''}
+                        name="name"
+                        onChange={this.handleInputChange} />
                     <input className="signup-inputs" type="email" placeholder="Email Address"
-                        onChange={event => this.setState({ email: event.target.value })} ></input>
-                    <select onChange={event => this.setState({ role: event.target.value })} className="signup-inputs">
-                        <option defaultValue="true">Select Your Role</option>
-                        <option>Teacher</option>
-                        <option>Parent/Volunteer</option>
-                    </select>
+                        name="email"
+                        value={this.state.email || ''}
+                        onChange={this.handleInputChange} ></input>
+                    <p>Role: {this.state.position}<br />This cannot be changed</p>
+
                     <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Save Changes</button>
 
                 </div>

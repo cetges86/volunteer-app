@@ -6,7 +6,7 @@ import "./main.css";
 class editPost extends Component {
 
     state = {
-        author: '',
+        author: "",
         title: "",
         date: "",
         peopleNeeded: 0,

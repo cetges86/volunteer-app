@@ -40,7 +40,7 @@ class VolListing extends Component {
         return (
             <li className="vol-post">
                 <h4>{this.props.title}  by {this.props.author}</h4>
-                <h5>Date of Event{this.props.date.substring(0, 15)}</h5>
+                <h5>Date of Event: {this.props.date.substring(0, 15)}</h5>
                 <ul>
                     <li>Number of Helpers: {this.props.peopleNeeded}</li>
                     <li>{this.props.description}</li>

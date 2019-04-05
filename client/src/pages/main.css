@@ -229,7 +229,7 @@ h1 {
 }
 
 .vol-list {
-    display:inline;
+    display:inline-block;
     border: 2px solid var(--light);
     padding:3px;
     border-radius:10px;

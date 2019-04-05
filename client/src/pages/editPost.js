@@ -40,6 +40,13 @@ class editPost extends Component {
         });
     }
 
+    selectDate = (event) => {
+        // eslint-disable-next-line
+        let newDate = new Date(event.target.value.replace(/-/g, '\/'));
+        let formattedDate = newDate.toDateString();
+        this.setState({date: formattedDate});
+    }
+
     handleSubmit = () => {
         let editedPost = {
             author: this.state.author,
@@ -77,7 +84,7 @@ class editPost extends Component {
                     <p>Current Date: {this.state.date.substring(0, 10) || ''}</p>
                     <input className="signup-inputs" type="date" placeholder="New Date"
                         name="date"
-                        onChange={this.handleInputChange} ></input>
+                        onChange={this.selectDate} ></input>
                     <label>Number of Helpers Needed</label>
                     <input className="signup-inputs" type="number" placeholder="Number of Volunteers Needed"
                         value={this.state.peopleNeeded || ''}

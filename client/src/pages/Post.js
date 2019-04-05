@@ -21,12 +21,21 @@ class Post extends Component {
         this.setState({ role: role });
     }
 
+    selectDate = (event) => {
+        //console.log(this.state.date);
+        console.log(event.target.value);
+        // eslint-disable-next-line
+        let newDate = new Date(event.target.value.replace(/-/g, '\/'));
+        let formattedDate = newDate.toDateString();
+        this.setState({date: formattedDate});
+    }
+
     handleSubmit = () => {
-        console.log(this.state);
+
         let newPost = {
             author: this.state.author,
             title: this.state.title,
-            date: this.state.date.substring(0, 10),
+            date: this.state.date,
             peopleNeeded: parseInt(this.state.peopleNeeded, 10),
             description: this.state.description
         }
@@ -58,8 +67,9 @@ class Post extends Component {
                             onChange={event => this.setState({ title: event.target.value })} />
                         <label>Date</label>
                         <input className="signup-inputs" type="date" placeholder="Date"
-                            onChange={event =>
-                                this.setState({ date: event.target.value })} ></input>
+                            onChange={this.selectDate}
+                            // onChange={event => this.setState({ date: event.target.value })} 
+                            ></input>
                         <label>Number of Helpers Needed</label>
                         <input className="signup-inputs" type="number" placeholder="Number of Volunteers Needed"
                             onChange={event => this.setState({ peopleNeeded: event.target.value })} ></input>
@@ -68,6 +78,7 @@ class Post extends Component {
                             onChange={event => this.setState({ description: event.target.value })}></textarea>
 
                         <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Add Posting</button>
+                        <br />
                     </div>
 
                 </div>

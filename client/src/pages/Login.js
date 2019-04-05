@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import "./main.css";
 import logo from "../img/logo.png";
 import API from "../util/API";
@@ -21,6 +20,7 @@ class Login extends Component {
                 sessionStorage.setItem("userName", res.data.email)
                 sessionStorage.setItem("name", res.data.name)
                 sessionStorage.setItem("userRole", res.data.role)
+                sessionStorage.setItem("photo", res.data.photo)
                 if (res.data.role === "Teacher") {
                     this.props.history.push(`/teachermain`)
                 } else if (res.data.role === "Parent/Volunteer") {

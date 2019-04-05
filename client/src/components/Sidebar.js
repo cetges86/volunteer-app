@@ -12,10 +12,8 @@ class Sidebar extends Component {
 
     componentDidMount = () => {
         let loggedInUser = sessionStorage.getItem("userName");
-        console.log(loggedInUser);
         API.getUser(loggedInUser).then(res => {
             console.log(res.data);
-            //sessionStorage.setItem("userRole", res.data.role)
             this.setState({name: res.data.name, position:res.data.role, imageURL:res.data.photo})
         })
     }
@@ -25,11 +23,11 @@ class Sidebar extends Component {
     render(){
         return (
             <div className="sidebar">
-                    <img className ="img-thumbnail" src={this.state.imageURL}></img>
+                    <img alt="Profile Img" className ="img-thumbnail" src={this.state.imageURL}></img>
                     <p>
-                       <span id="sidebar-name">{this.state.name}</span> 
+                       {this.state.name}
                     <br/>
-                        {this.state.position}
+                    <span id="sidebar-role">{this.state.position}</span>
                     </p>
             </div>
 

@@ -15,7 +15,7 @@ var PostSchema = new Schema({
     required: true
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   peopleNeeded: {

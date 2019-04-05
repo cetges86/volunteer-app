@@ -38,7 +38,10 @@ class MainPage extends Component {
                     </div>
                     <div>
                         <h1>All Posts</h1>
-                        <ul>
+                        {
+                        (this.state.posts.length === 0)
+                        ? <div>There are no positions to sign up for yet. Check back later!</div>
+                        : <ul>
                             {this.state.posts.map(post => {
                                 return <VolListing
                                     refresh = {this.refreshListings}
@@ -46,6 +49,7 @@ class MainPage extends Component {
                                     {...post} />
                             })}
                         </ul>
+                        }
                     </div>
                 </div>
 

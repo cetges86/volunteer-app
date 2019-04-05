@@ -126,10 +126,10 @@ class editUser extends Component {
                         name="email"
                         value={this.state.email || ''}
                         onChange={this.handleInputChange} ></input>
-                    <p>Role: {this.state.position}<br />This cannot be changed</p>
+                    <p id="edit-role">Your role of {this.state.role} cannot be changed</p>
 
                     <button className="btn" type="submit" value="Submit" onClick={this.handleSubmit}>Save Changes</button>
-
+                    <br />
                 </div>
             </div>
         )

@@ -195,7 +195,7 @@ select {
     border-right: 1px solid var(--light);
 }
 
-#sidebar-name {
+#sidebar-role {
     color:var(--med);
 }
 
@@ -230,6 +230,16 @@ h1 {
 
 .vol-list {
     display:inline;
+    border: 2px solid var(--light);
+    padding:3px;
+    border-radius:10px;
+    margin:3px 5px;
+}
+
+.vol-list:hover {
+    transition:1s;
+    background-color:var(--med);
+    color:white;
 }
 
 
@@ -247,4 +257,9 @@ h1 {
     margin:1rem auto;
     text-align: center;
     border:2px dashed var(--med);
+}
+
+#edit-role {
+    margin-left:10px;
+    font-size:.7rem;
 }
